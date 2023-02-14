@@ -34,6 +34,31 @@ async function main() {
     //    const {GME, MSFT, DIS, BTNX} = result 
     // This is an example of "destructuring" an object
     // "Destructuring" creates new variables from an object or an array
-    
+ 
+    new Chart(timeChartCanvas.getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor:  'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)'
+            }]
+        }
+    });
+    new Chart(timeChartCanvas.getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: stocks[0].values.map(value => value.datetime),
+            datasets: stocks.map( stock => ({
+                label: stock.meta.symbol,
+                data: stock.values.map(value => parseFloat(value.high)),
+                backgroundColor:  getColor(stock.meta.symbol),
+                borderColor: getColor(stock.meta.symbol),
+            }))
+        }
+    });
+        
 
 main();
