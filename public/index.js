@@ -7,17 +7,13 @@ async function main() {
 
     const API_KEY = '6a29e68398f84ab68e742e61032201ad';
 
-
+    
     const response = await fetch(`https://api.twelvedata.com/time_series?symbol=GME,MSFT,DIS,BNTX&interval=1day&apikey=${API_KEY}`);
     const result = await response.json();
     console.log(result);
-
-   
+    
     const { GME, MSFT, DIS, BNTX} = result;
     const stocks = [GME, MSFT, DIS, BNTX];
-    
-    
-    
     // Bonus Note: 
     // Another way to write the above lines would to refactor it as:
     //    const {GME, MSFT, DIS, BTNX} = result 
@@ -36,4 +32,4 @@ async function main() {
             }]
         }
     });
-}        
+}       
